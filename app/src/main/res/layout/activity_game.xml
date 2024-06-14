@@ -58,34 +58,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivGuess" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ivScissors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/button_selector"
         android:src="@drawable/scissors"
         app:layout_constraintEnd_toStartOf="@+id/ivPaper"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvYourGuess" />
+        app:layout_constraintTop_toBottomOf="@+id/tvYourGuess"
+        app:tint="@color/color_state_list" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ivRock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:background="@drawable/button_selector"
         android:src="@drawable/rock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivScissors" />
+        app:layout_constraintTop_toBottomOf="@+id/ivScissors"
+        app:tint="@color/color_state_list" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ivPaper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
         android:src="@drawable/paper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivScissors"
-        app:layout_constraintTop_toTopOf="@+id/ivScissors" />
+        app:layout_constraintTop_toTopOf="@+id/ivScissors"
+        app:tint="@color/color_state_list" />
 
     <TextView
         android:id="@+id/tvYou"
