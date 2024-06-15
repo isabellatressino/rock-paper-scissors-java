@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.MyApplication">
         <item name="android:fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>
