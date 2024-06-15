@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:text="20"
+        android:text="0"
         app:layout_constraintBottom_toBottomOf="@+id/tvRoundText"
         app:layout_constraintStart_toEndOf="@id/tvRoundText"
         app:layout_constraintTop_toTopOf="@id/tvRoundText" />
@@ -38,59 +38,97 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivGuess"
+    <TextView
+        android:id="@+id/tvAppChoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/guess"
+        android:text="Escolha do app"
+        app:layout_constraintBottom_toTopOf="@id/ibGuess"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <ImageButton
+        android:id="@+id/ibGuess"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/circle_shape"
+        android:src="@drawable/guess"
+        app:layout_constraintBottom_toTopOf="@id/tvYourGuess"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_max="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAppChoice"
+        app:layout_constraintWidth_max="120dp" />
 
     <TextView
         android:id="@+id/tvYourGuess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Escolha sua jogada"
+        android:layout_marginVertical="10dp"
+        android:text="Sua escolha"
+        app:layout_constraintBottom_toTopOf="@id/ibPaper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivGuess" />
+        app:layout_constraintTop_toBottomOf="@+id/ibGuess" />
 
     <ImageButton
-        android:id="@+id/ivScissors"
+        android:id="@+id/ibReplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@null"
+        android:src="@drawable/icon_replay"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tvGameResult"
+        app:layout_constraintStart_toEndOf="@id/tvGameResult"
+        app:layout_constraintTop_toTopOf="@id/tvGameResult" />
+
+    <ImageButton
+        android:id="@+id/ibScissors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/button_selector"
         android:src="@drawable/scissors"
-        app:layout_constraintEnd_toStartOf="@+id/ivPaper"
+        app:layout_constraintBottom_toTopOf="@id/ibRock"
+        app:layout_constraintEnd_toStartOf="@+id/ibPaper"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvYourGuess"
         app:tint="@color/color_state_list" />
 
     <ImageButton
-        android:id="@+id/ivRock"
+        android:id="@+id/ibRock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:background="@drawable/button_selector"
         android:src="@drawable/rock"
+        app:layout_constraintBottom_toTopOf="@id/tvGameResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivScissors"
+        app:layout_constraintTop_toBottomOf="@id/ibScissors"
         app:tint="@color/color_state_list" />
 
+    <TextView
+        android:id="@+id/tvGameResult"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginVertical="15dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/viewScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibRock" />
+
     <ImageButton
-        android:id="@+id/ivPaper"
+        android:id="@+id/ibPaper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_selector"
         android:src="@drawable/paper"
+        app:layout_constraintBottom_toBottomOf="@id/ibScissors"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivScissors"
-        app:layout_constraintTop_toTopOf="@+id/ivScissors"
+        app:layout_constraintStart_toEndOf="@id/ibScissors"
+        app:layout_constraintTop_toTopOf="@id/ibScissors"
         app:tint="@color/color_state_list" />
 
     <TextView
@@ -99,25 +137,25 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="Você"
-        app:layout_constraintBottom_toTopOf="@id/tvVersus"
-        app:layout_constraintEnd_toStartOf="@id/tvVersus" />
+        app:layout_constraintStart_toStartOf="@id/viewScore"
+        app:layout_constraintTop_toTopOf="@id/viewScore"
+        app:layout_constraintVertical_bias="1" />
 
     <TextView
         android:id="@+id/tvApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:text="App"
-        app:layout_constraintStart_toEndOf="@id/tvVersus"
-        app:layout_constraintTop_toTopOf="@+id/tvYou" />
+        app:layout_constraintEnd_toEndOf="@+id/viewScore"
+        app:layout_constraintTop_toTopOf="@id/viewScore" />
 
     <TextView
         android:id="@+id/tvPlayerScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        app:layout_constraintEnd_toStartOf="@id/tvVersus"
-        app:layout_constraintStart_toStartOf="@+id/tvYou"
+        app:layout_constraintEnd_toEndOf="@id/tvYou"
+        app:layout_constraintStart_toStartOf="@id/tvYou"
         app:layout_constraintTop_toBottomOf="@id/tvYou" />
 
     <TextView
@@ -125,16 +163,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        app:layout_constraintEnd_toEndOf="@+id/tvApp"
-        app:layout_constraintStart_toEndOf="@id/tvVersus"
+        app:layout_constraintEnd_toEndOf="@id/tvApp"
+        app:layout_constraintStart_toStartOf="@id/tvApp"
         app:layout_constraintTop_toBottomOf="@id/tvApp" />
 
     <TextView
         android:id="@+id/tvVersus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:text="x"
+        app:layout_constraintEnd_toStartOf="@id/tvAppScore"
+        app:layout_constraintStart_toEndOf="@id/tvPlayerScore"
+        app:layout_constraintTop_toBottomOf="@id/tvYou" />
+
+    <View
+        android:id="@+id/viewScore"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
