@@ -1,20 +1,12 @@
 package com.isabellatressino.myapplication;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.isabellatressino.myapplication.databinding.ActivityGameBinding;
 import com.isabellatressino.myapplication.databinding.CustomDialogBinding;
@@ -36,31 +28,11 @@ public class GameActivity extends AppCompatActivity {
         binding = ActivityGameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.ibScissors.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectButton(binding.ibScissors, "scissors");
-            }
-        });
-
-        binding.ibRock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectButton(binding.ibRock, "rock");
-            }
-        });
-
-        binding.ibPaper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectButton(binding.ibPaper, "paper");
-            }
-        });
+        setChoiceListeners();
 
         binding.ibReplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 newRound();
             }
         });
@@ -73,54 +45,60 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    private void newRound() {
-        round++;
-        binding.ibScissors.setSelected(false);
-        binding.ibScissors.setEnabled(true);
+    private void setChoiceListeners() {
+        View.OnClickListener choiceListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v == binding.ibScissors) {
+                    selectButton(binding.ibScissors, "scissors");
+                } else if (v == binding.ibRock) {
+                    selectButton(binding.ibRock, "rock");
+                } else if (v == binding.ibPaper) {
+                    selectButton(binding.ibPaper, "paper");
+                }
+            }
+        };
 
-        binding.ibRock.setSelected(false);
-        binding.ibRock.setEnabled(true);
+        binding.ibScissors.setOnClickListener(choiceListener);
+        binding.ibRock.setOnClickListener(choiceListener);
+        binding.ibPaper.setOnClickListener(choiceListener);
+    }
 
-        binding.ibPaper.setSelected(false);
-        binding.ibPaper.setEnabled(true);
 
+    private void changeStatesButtons(Boolean isSelected, Boolean isEnabled) {
+        binding.ibScissors.setSelected(isSelected);
+        binding.ibScissors.setEnabled(isEnabled);
+
+        binding.ibRock.setSelected(isSelected);
+        binding.ibRock.setEnabled(isEnabled);
+
+        binding.ibPaper.setSelected(isSelected);
+        binding.ibPaper.setEnabled(isEnabled);
+    }
+
+    private void resetGame() {
         binding.ibGuess.setImageResource(R.drawable.guess);
         binding.tvGameResult.setText("");
         binding.ibReplay.setVisibility(View.GONE);
 
+        changeStatesButtons(false, true);
         updateScoreRound();
+    }
 
+    private void newRound() {
+        round++;
+        resetGame();
     }
 
     private void newGame() {
         round = 1;
         appScore = 0;
         userScore = 0;
-        binding.ibScissors.setSelected(false);
-        binding.ibScissors.setEnabled(true);
-
-        binding.ibRock.setSelected(false);
-        binding.ibRock.setEnabled(true);
-
-        binding.ibPaper.setSelected(false);
-        binding.ibPaper.setEnabled(true);
-
-        binding.ibGuess.setImageResource(R.drawable.guess);
-        binding.tvGameResult.setText("");
-        binding.ibReplay.setVisibility(View.GONE);
-
-        updateScoreRound();
+        resetGame();
     }
 
     private void selectButton(ImageButton selectedButton, String option) {
-        binding.ibScissors.setSelected(false);
-        binding.ibScissors.setEnabled(false);
-
-        binding.ibRock.setSelected(false);
-        binding.ibRock.setEnabled(false);
-
-        binding.ibPaper.setSelected(false);
-        binding.ibPaper.setEnabled(false);
+        changeStatesButtons(false, false);
 
         selectedButton.setSelected(true);
 
@@ -169,7 +147,6 @@ public class GameActivity extends AppCompatActivity {
         binding.tvGameResult.setText(txt);
         binding.ibReplay.setVisibility(View.VISIBLE);
         updateScoreRound();
-
     }
 
     private void updateScoreRound() {
