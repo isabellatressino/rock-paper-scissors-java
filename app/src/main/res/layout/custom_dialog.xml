@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="25dp"
+    android:layout_marginHorizontal="30dp"
+    android:background="@drawable/dialog_shape">
+
+    <ImageButton
+        android:id="@+id/ibCloseDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:src="@drawable/icon_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvGameResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Selecione a opção desejada"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/ylnmn_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibCloseDialog" />
+
+    <Button
+        android:id="@+id/btnNewGame"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="@color/ylnmn_blue"
+        android:text="Novo Jogo"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnExit"
+        app:layout_constraintStart_toStartOf="@+id/tvGameResult"
+        app:layout_constraintTop_toBottomOf="@+id/tvGameResult" />
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:backgroundTint="@color/ylnmn_blue"
+        android:text="Sair"
+        android:textSize="16sp"
+
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNewGame"
+        app:layout_constraintEnd_toEndOf="@+id/tvGameResult"
+        app:layout_constraintStart_toEndOf="@id/btnNewGame"
+        app:layout_constraintTop_toTopOf="@+id/btnNewGame" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
